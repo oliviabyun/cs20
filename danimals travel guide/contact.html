@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <!-- link external stylesheet -->
+        <!-- <link type="text/css" href="style.css" rel="stylesheet"/> -->
+        <!-- <link type="text/css" href="https://oliviab.sgedu.site/finalproject/style.css" rel="stylesheet"> -->
+        <!-- <link type="text/css" href="http://danielpeng.infinityfreeapp.com/style.css" rel="stylesheet"> -->
+        <link type="text/css" href="https://oliviabyun.github.io/finalproject/style.css?i=15" rel="stylesheet">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <!-- <link href="https://fonts.googleapis.com/css2?family=Barlow&display=swap" rel="stylesheet"> -->
+        
+        <style>
+            /* #AAD4F0 - USA Color Scheme */
+            form {
+                background-color: #AAD4F0;
+                border: 1px solid black;
+                width: 50%;
+                margin: 0 auto;
+                text-align: center;
+                padding: 10px;
+            }
+
+            .boxes {
+                text-align: right;
+                margin-right: 25%;
+            }
+
+            .required:after {
+                content: "*";
+                color: red;
+            }
+
+            /* .userInfo, .col2 {
+                display: inline-block;
+                width: 50%;
+                margin-bottom: 20px;
+            } */
+
+            textarea {
+                resize: none;
+                width: 50%;
+            }
+
+        </style>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script language="javascript">
+            window.onload = function() {
+
+            }
+        </script>
+    </head>
+    <body>
+            
+        <h1>Danimals Guide</h1>
+        
+        <a href="/">
+            <input type="submit" id="button" value="Go to Home"/>
+        </a>
+        <br/><br/>
+        <!-- form for user to select activities -->
+        <form class="form" method="post" action="/contactprocess">
+            <!-- Text boxes -->
+            <div class="info">
+                
+            </div>
+            <p>Questions? Comments? Want to schedule an appointment? Let us know below!</p>
+            <div class="boxes">
+                <br/>
+                <label class="required">First Name</label>: <input type="text" class="col2" name='fname' required="1" placeholder="John"/>
+                <br/>
+                <label class="required">Last Name</label>:  <input type="text" class="col2" name='lname' required="1" placeholder="Smith"/>
+                <br/>
+                <label class="required">Email</label>: <input type="text" class="col2" name='email' required="1" placeholder="jsmith01@tufts.edu"/>
+                <br/>
+            </div>
+                <br/>
+                <label>Comments/Questions</label>: <br/>
+                <textarea rows = "5" cols = "60" name = "description" required="1" placeholder="I love to travel!!!">
+                </textarea>
+            <br/>
+            <input type="submit" id="button" value="Submit">
+        </form>
+        <br/>
+        <br/>
+    </body>
+</html>

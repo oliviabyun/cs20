@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <!-- link external stylesheet -->
+        <!-- <link type="text/css" href="style.css" rel="stylesheet"/> -->
+        <!-- <link type="text/css" href="https://oliviab.sgedu.site/finalproject/style.css" rel="stylesheet"> -->
+        <!-- <link type="text/css" href="http://danielpeng.infinityfreeapp.com/style.css" rel="stylesheet"> -->
+        <link type="text/css" href="https://oliviabyun.github.io/finalproject/style.css?i=15" rel="stylesheet">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <!-- <link href="https://fonts.googleapis.com/css2?family=Barlow&display=swap" rel="stylesheet"> -->
+        
+        <style>
+            /* #AAD4F0 - USA Color Scheme */
+            .mainForm {
+                background-color: #b1b5dd;
+                border: 1px solid black;
+            }
+
+            .homeForm {
+                margin: 0 auto;
+                border: none;
+            }
+
+            .exchange {
+                background-color: #AAD4F0;
+                border: 1px solid black;
+                width: 50%;
+                text-align: left;
+                justify-content: center;
+                text-align: center;
+                margin-top: 5px;
+                margin: 0 auto;
+            }
+
+            .check-container{
+                /* border: 1px solid black; */
+                justify-content: right;
+                margin-left: 25%;
+                padding: 10px;
+                text-align: left;
+                width: 70%;
+            }
+        </style>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script language="javascript">
+            window.onload = function() {
+                //call functions to get data (fetch and AJAX call)
+                fetchData();
+            }
+
+            async function fetchData() {
+                //get response from API
+                let response = await fetch("https://v6.exchangerate-api.com/v6/581fcdf491411ea71c88ac38/latest/USD");
+                
+                //get data in JSON format
+                let data = await response.json();
+                
+                if (response.status == 200) {
+                    //display select data
+                    display = "Current Exchange Rate: $1 USD = $" + data["conversion_rates"]["CAD"].toFixed(2) + " CAD";
+
+                    //set div to display data
+                    document.getElementById("data").innerHTML = display;
+                } else {
+                    //display error message
+                    document.getElementById("data").innerHTML = "Something went wrong!  Try again";
+                }
+            }
+
+            // Function checks to see if each box is checked, toggles if false, does
+            // nothing if true.
+            function check_uncheck_checkbox(isChecked) {
+                if(isChecked) {
+                    $('#checkAll').text("Uncheck All");
+                    $('input[id="box"]').each(function() { 
+                        this.checked = true; 
+                    });
+                } else {
+                    $('#checkAll').text("Check All");
+                    $('input[id="box"]').each(function() {
+                        this.checked = false;
+                    });
+                }
+            }
+
+            function check() {
+                this.checked = true;
+                if(checkState()){
+                    $('#checkall').prop('checked', true);
+                    $('#checkAll').text("Uncheck All");
+                }
+                else{
+                    $('#checkAll').text("Check All");
+                    $('#checkall').prop('checked', false);
+                }
+            }
+
+            // checks to see if each checkbox is checked or not, returns true or false
+            function checkState() {
+                flag = true;
+                $('input[id="box"]').each(function(){
+                    if(this.checked == false){
+                        flag = false;
+                    }
+                })
+                return flag;
+            }
+
+            function validate() {
+                historical = document.getElementsByName("historical")[0];
+                water = document.getElementsByName("water")[0];
+                nature = document.getElementsByName("nature")[0];
+                food = document.getElementsByName("food")[0];
+                city = document.getElementsByName("city")[0];
+
+                if (historical.checked || water.checked || nature.checked || food.checked
+                    || city.checked) {
+                    return true;
+                }
+
+                alert("Please select 1 or more boxes");
+                return false;
+            }
+
+        </script>
+    </head>
+    <body>
+            
+        <h1>Danimals Guide</h1>
+
+        <br/>        
+        <!-- interactive map? -->
+        <img src="https://oliviab.sgedu.site/finalproject/canada.png" width=50%/>
+        <br />
+        <!-- #CC5E3B -->
+        <a href="/">
+            <!-- <input type="submit" id="button" value="Go to Home"/> -->
+            <button>Go to Home</button>
+        </a>
+        &nbsp;
+        <a href="/contact">
+            <!-- <input type="submit" id="button" value="Contact Us"/> -->
+            <button>Contact Us</button>
+        </a>
+        
+        <!-- display exchange rate data from API -->
+        <div class="exchange" id ='data'>&nbsp;</div>
+        <br/>
+        
+        <!-- form for user to select activities -->
+        <form class="mainForm" method="post" action="/canadaprocess" onsubmit="return validate()">
+            <br />
+            Select any statements that apply to you and we can provide 
+            suggestions tailored to your personal preferences! <br />
+            <div class="check-container">
+                <input type="checkbox" name="checkall" id="checkall" onclick="check_uncheck_checkbox(this.checked);" /><label id="checkAll" for="button">Check all</label>
+                <br />
+            </div>
+
+            <div class="check-container">
+            <input type="checkbox" id="box" name="historical" onclick="check()">I like learning about history.<br/>
+            <input type="checkbox" id="box" name="water" onclick="check()">I enjoy going to the beach.<br/>
+            <input type="checkbox" id="box" name="nature" onclick="check()">I enjoy nature and the outdoors.<br/>
+            <input type="checkbox" id="box" name="food" onclick="check()">I like trying new foods.<br/>
+            <input type="checkbox" id="box" name="city" onclick="check()">I like exploring cities.<br/><br/>
+            </div>
+
+            <input type="submit" id="button" value="Submit">
+        </form>
+        <!-- query database based on form -->
+        <br/>
+        
+        <br/>
+    </body>
+</html>
