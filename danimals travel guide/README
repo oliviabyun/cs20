@@ -1,0 +1,7 @@
+This is a webapp for a travel agency based in North America. Users have the option to first select the USA, Canada, or Mexico. 
+Destinations will then be available via a checkbox, so users can decide what type of activity they would like to do in said 
+country. There is also a currency conversion (assuming users live in the USA) so they can travel hassle-free.
+
+We picked this project because we have a passion for traveling and figured it would be nice to have something that made 
+choosing where to travel easier. This is something that we would personally use so we figured we would use our skills to make 
+it happen for our final project.
