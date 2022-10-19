@@ -93,32 +93,6 @@
 		return date2;
 	}
 
-	/*function displayOrder(time, type, total) {
-		//TODO: can use same time logic on new page
-		//get hour and minutes to display in hour:minutes formate
-		hour = time.getHours();
-		minutes = time.getMinutes();
-
-		//determine if AM or PM
-		if (time.getHours() >= 12) {
-			am = "PM";
-		} else {
-			am = "AM";
-		}
-
-		if (total == "") {
-			total = 0;
-		}
-
-		//concatenate order data
-		order = "Thanks for ordering from Jade Delight!<br/>" + type + " time: " + hour + ":"
-				+ minutes.toString() + " " + am + "<br/> Total: $" + total;
-		
-		//open new window, display order confirmation
-		myWindow = window.open("", "MsgWindow", "width=300,height=200");
-		myWindow.document.write(order);
-	}*/
-
 	function validate() {
 		//validate last name and phone number
 		if (!validateLast() || !validatePhoneNumber() || !validateOrder()) {
