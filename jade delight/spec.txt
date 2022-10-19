@@ -1,0 +1,20 @@
+Your task is to add functionality to the HTML page provided (jade_delight.html)
+
+You will need to figure out how the page was created as well as to write the Javascript for the additional functionality.
+
+You may change the page formatting, but not the Javascript code already in place without asking permission first.
+
+The following is what needs to be added to the page:
+
+
+When a user selects a quantity
+the amount should automatically be filled in to the corresponding total cost box.
+The subtotal, tax and total should update and be filled in
+
+When the user clicks submit:
+Verify that the last name and phone are entered. The phone should be a valid phone number.
+If the order was pickup, calculate the time 15 min from the order time
+If the order was delivery, calculate the time 30 min from the order time for expected delivery time
+If the order was delivery, the street and city are required
+If there are validation issues, indicate the issue to the user.
+If there are no validation issues, display a message that thanks the user for their order, displays the pickup or delivery time and the total amount for the order.
