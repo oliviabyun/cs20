@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+	<style>
+		.slideshow {
+			margin: auto;
+			width: 60%;
+			border: 2px solid black;
+			padding: 10px;
+		}
+
+		.slideshow img {
+			width: 100%;
+		}
+
+		.buttons {
+			margin: auto;
+			text-align: center;
+			padding: 10px;
+		}
+
+		body {
+			text-align: center;
+			font-family: Verdana, Geneva, Tahoma, sans-serif;
+			background-color: aliceblue;
+		}
+	</style>
+	
+	<script>
+		interval = 0;
+		var images = [ "images/image1.jpg",
+				"images/image2.jpg",
+				"images/image3.jpg",
+				"images/image4.jpg",
+				"images/image5.jpg"
+			];
+
+		$(document).ready(function () {
+			$("#start").click(pressStart);
+			$("#stop").click(pressStop);
+		});
+
+		function pressStart() {
+			
+			var i = 0;
+			var pic = $("img:first");
+
+
+			interval = setInterval(function () {
+				// Returns 0, 1, 2, 3, 0, 1, 2, ....
+				i = (i + 1) % images.length;
+
+				pic.fadeOut(200, function () {
+					$(this).attr("src", images[i]);
+					$(this).fadeIn(1050);
+				});
+			}, 5000);
+		}
+
+		function pressStop() {
+			clearInterval(interval);
+		}
+	</script>
+</head>
+
+<body>
+	<h1>Slideshow</h1>
+	<p>Click "start" to start the slideshow, and "stop" to pause it!</p>
+	<div class="slideshow">
+		<img src="images/image1.jpg" />
+	</div>
+	<div class="buttons">
+		<input type="button" id="start" value="Start">
+		<input type="button" id="stop" value="Stop">
+	</div>
+</body>
+</html>

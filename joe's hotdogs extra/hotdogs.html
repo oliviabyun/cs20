@@ -1,0 +1,163 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link type="text/css" href="style.css" rel="stylesheet"/>
+        <script language = "javascript">
+            window.onload = function() {
+                btn = document.getElementById("button1");
+
+                btn.onclick = function() {
+                    run = validate();
+                    if (run) {
+                        //get quantity of each item
+                        numHotdogs = parseInt(document.form.hotdogs.value);
+                        numFries = parseInt(document.form.fries.value);
+                        numSodas = parseInt(document.form.sodas.value);
+                        
+                        //calculate price of each menu order
+                        pHotdogs = calculatePrice(numHotdogs, 3.75);
+                        pFries = calculatePrice(numFries, 2.00);
+                        pSodas = calculatePrice(numSodas, 1.80);
+                        
+                        //calculate subtotal
+                        subtotal = pHotdogs + pFries + pSodas;
+
+                        //add prices of items and subtotal to be displayed
+                        display = numHotdogs + " qty Hotdogs: $" + pHotdogs.toFixed(2) + "<br/>";
+                        display = display + numFries + " qty Fries: $" + pFries.toFixed(2) + "<br/>";
+                        display = display + numSodas + " qty Sodas: $" + pSodas.toFixed(2) + "<br/>";
+                        display = display + "Subtotal: $" + subtotal.toFixed(2) + "<br/>";
+
+                        //determine if discount should be applies
+                        results = displayDiscount(subtotal);
+                        
+                        //show discount, if applicable
+                        if (results[0] != subtotal) {
+                            subtotal = results[0];
+                            discount = results[1];
+                            displayResult = results[2];
+                            display += displayResult;
+                        }
+
+                        //calculate and round sales tax (6.25%)
+                        tax = calculatePrice(subtotal, 0.0625);
+                        taxRounded = tax.toFixed(2);
+                        display = display + "Massachusetts meals tax: $" + taxRounded + "<br/><br/>";
+
+                        //calculate and display total
+                        total = subtotal + tax;
+                        total = total.toFixed(2);
+                        display = display + "<strong>Total: $" + total + "</strong>";
+
+                        //display results in div
+                        document.getElementById("result").innerHTML = display;
+                    } 
+                    
+                }
+            }
+
+            //calculate price based on quantity and price per item
+            function calculatePrice(numItems, itemPrice) {
+                price = numItems * itemPrice;
+                return price;
+            }
+
+            function displayDiscount(subtotal, display) {
+                newSubtotal = subtotal;
+                results = [];
+                results.push(newSubtotal);
+
+                if (subtotal >= 20) {
+                    //calculate and apply 10% discount to subtotal
+                    discount = subtotal * 0.1;
+                    newSubtotal = subtotal - discount;
+
+                    //round discount and subtotal
+                    discountRounded = discount.toFixed(2);
+                    subtotalRounded = newSubtotal.toFixed(2);
+
+                    results[0] = newSubtotal;
+                    results.push(discountRounded);
+
+                    //display discount and updated subtotal
+                    result = "<strong>You received Joe's special offer - a 10% discount!</strong><br>";
+                    result = result + "Discount applied: -$" + discountRounded + "<br>";
+                    result = result + "Updated subtotal: $" + subtotalRounded + "<br>";
+                    results.push(result);
+                }
+
+                //return array with results (subtotal, discount, display)
+                return results;
+            }
+
+            function validate() {
+                //make sure at least one item is ordered
+                if (document.form.hotdogs.value == "0" && document.form.fries.value == "0" && document.form.sodas.value == "0") {
+                    alert("Please order at least one item.")
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+        </script>
+    </head>
+
+    <body>
+        <!--Title-->
+        <h1>Joe's Hotdogs</h1><br/>
+        <h2>Est. 1985</h2><br/>
+
+        <!--Form to Prompt User-->
+        <form name = "form" onsubmit = "return validate();" method="post" action="order.php">
+            Hotdogs: $3.75 &nbsp;Quantity:
+            <!--Dropdown for hotdogs-->
+            <select id="hotdogs" name="hotdogs">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+            </select><br/>
+            Fries: $2.00 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            Quantity: 
+            <!--Dropdown for fries-->
+            <select id="fries" name="fries">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+            </select><br/>
+            Soda: $1.80 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            Quantity:
+            <!--Dropdown for sodas-->
+            <select id="sodas" name="sodas">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+            </select><br/><br/>
+            <input type = "button" name = "button1" value = "Order" id = "button1">
+            <br/><br/>
+            <div class="box">
+                <div class = "result" id = "result">&nbsp;</div>
+            </div>
+            <br/>
+            <br/>
+        </form>
+    </body>
+</html>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="style.css"?>
+
+<songlist>
+    <header>The Rose Setlist</header>
+    <artist>The Script
+        <song>
+            <title>Title: Breakeven</title>
+            <genre>Genre: Pop </genre>
+            <genre>Genre: Rock</genre>
+            <year>Year: 2008 </year>
+        </song>
+        <br></br>
+        <song>
+            <title>Title: Millionaires</title>
+            <genre>Genre: Pop </genre>
+            <genre>Genre: Rock</genre>
+            <year>Year: 2008</year>
+        </song>
+    </artist>
+
+    <artist>Coldplay
+        <br></br>
+        <song>
+            <title>Title: Yellow</title>
+            <genre>Genre: Indie </genre>
+            <genre>Genre: Rock</genre>
+            <year>Year: 2000</year>
+        </song>
+        <br></br>
+        <song>
+            <title>Title: Viva la Vida</title>
+            <genre>Genre: Indie </genre>
+            <genre>Genre: Pop</genre>
+            <year>Year: 2008</year>
+        </song>
+    </artist>
+
+    <artist>LANY
+        <song>
+            <title>Title: ILYSB</title>
+            <genre>Genre: Indie </genre>
+            <genre>Genre: Alternative</genre>
+            <year>Year: 2016</year>
+        </song>
+    </artist>
+
+    <artist>BANNERS
+        <song>
+            <title>Title: Someone to You</title>
+            <genre>Genre: Indie</genre>
+            <genre>Genre: Rock</genre>
+            <year>Year: 2019</year>
+        </song>
+        <br></br>
+        <song>
+            <title>Title: Heads and Tails</title>
+            <genre>Genre: Indie</genre>
+            <genre>Genre: Alternative</genre>
+            <year>Year: 2019</year>
+        </song>
+    </artist>
+
+    <artist>James Bay
+        <song>
+            <title>Title: Hold Back the Rain</title>
+            <genre>Genre: Indie</genre>
+            <genre>Genre: Alternative</genre>
+            <year>Year: 2014</year>
+        </song>
+    </artist>
+</songlist>

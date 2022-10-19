@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" >
+        <link rel="stylesheet" href="style.css">
+
+        <script language="javascript">
+            window.onload = function() {
+                btn = document.getElementById("button1");
+
+                btn.onclick = function() {
+                    if (validate()) {
+                        //get values from form
+                        a = parseInt(document.form1.n1.value);
+                        b = parseInt(document.form1.n2.value);
+
+                        //find factors of a, sum of all the factors
+                        aFactors = findAllFactors(a);
+                        aSum = sumArray(aFactors);
+
+                        //find factors of b, sum of all the factors
+                        bFactors = findAllFactors(b);
+                        bSum = sumArray(bFactors);
+
+                        //default: the numbers are not amicable
+                        amicable = "The numbers: " + a + " and " + b + " are not amicable<br/>";
+
+                        //check if numbers are amicable, update message
+                        if (isAmicable(a, bSum) && isAmicable(b, aSum)) {
+                            amicable = "The numbers: " + a + " and " + b + " are amicable<br/>";
+                        }
+
+                        //create string to display factors of each number
+                        factorList = "Factors of " + a + ": " + aFactors + "<br/><br/>" + 
+                                    "Factors of " + b + ": " + bFactors;
+
+                        //display div with amicable result
+                        document.getElementById("result").innerHTML = amicable;
+
+                        //display div showing factors of each number
+                        document.getElementById("factor").innerHTML = factorList;
+                    }
+                    
+                }
+            }
+
+            //function to find and return array with all factors of given number
+            function findAllFactors(n) {
+                let factors = [];
+
+                //handle edge case - if number is 1, only factor is itself
+                if (n == 1) {
+                    factors.push(1);
+                    return factors;
+                }
+
+                //test all numbers between 1 and n/2
+                for (i = 1; i <= (n / 2); i++) {
+                    //if i divides n without remainder, add to factors array
+                    if (n % i == 0) {
+                        factors.push(i);
+                    }
+                }
+
+                //return array
+                return factors;
+            }
+
+            //function to calculate and return sum of all elements in an array
+            function sumArray(arr) {
+                let sum = 0;
+
+                //loop through array
+                for (i = 0; i < arr.length; i++) {
+                    //add each value in array to sum
+                    sum += arr[i];
+                }
+
+                //return sum
+                return sum;
+            }
+
+            //function determines if a num and other number's factors are equal
+            function isAmicable(num, factors) {
+                if (num == factors) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+            //function to validate form
+            function validate()
+            {
+                //make sure both input boxes are filled out
+                if (document.form1.n1.value != "" && document.form1.n2.value != "") {
+                    return true;
+                } else {
+                    alert("Please enter all data.")
+                    return false;
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Amicable Numbers</h1>
+        <p>Enter two numbers to see if they are amicable!</p>
+        <!--Create Form-->
+        <form name = "form1" onsubmit = "return validate();" method="get" action="#">
+            Number 1: <input type="text" name = 'n1' id='num1'><br/><br/>
+            Number 2: <input type="text" name = 'n2' id='n2'><br/><br/>
+            <input type = "button" name = "button1" value = "Check Amicable" id = "button1">
+            <br/><br/>
+            <div class="box">
+                <div class = "result" id = "result">&nbsp;</div>
+            </div>
+            <br/>
+            <div class="box">
+                <div class = "factor" id = "factor">&nbsp;</div>
+            </div>
+            <br/>
+        </form>
+    </body>
+</html>

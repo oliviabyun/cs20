@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="style2.css"?>
+
+<songlist>
+    <header>The Rose Setlist</header>
+    <artist> Artist: The Script
+        <song>
+            <title>Breakeven</title>
+            <genre>Pop,</genre>
+            <genre>Rock</genre>
+            <year>2008 </year>
+        </song>
+        <song>
+            <title>Millionaires</title>
+            <genre>Pop,</genre>
+            <genre>Rock</genre>
+            <year>2008</year>
+        </song>
+    </artist>
+
+    <artist>Artist: Coldplay
+        <song>
+            <title>Yellow </title>
+            <genre>Indie,</genre>
+            <genre>Rock</genre>
+            <year>2000</year>
+        </song>
+        <song>
+            <title>Viva la Vida </title>
+            <genre>Indie,</genre>
+            <genre>Pop</genre>
+            <year>2008</year>
+        </song>
+    </artist>
+
+    <artist>Artist: LANY
+        <song>
+            <title>ILYSB</title>
+            <genre>Indie,</genre>
+            <genre>Alternative</genre>
+            <year>2016</year>
+        </song>
+    </artist>
+
+    <artist>Artist: BANNERS
+        <song>
+            <title>Someone to You</title>
+            <genre>Indie,</genre>
+            <genre>Rock</genre>
+            <year>2019</year>
+        </song>
+        <song>
+            <title>Heads and Tails</title>
+            <genre>Indie,</genre>
+            <genre>Alternative</genre>
+            <year>2019</year>
+        </song>
+    </artist>
+
+    <artist>Artist: James Bay
+        <song>
+            <title>Hold Back the Rain</title>
+            <genre>Indie,</genre>
+            <genre>Alternative</genre>
+            <year>2014</year>
+        </song>
+    </artist>
+</songlist>

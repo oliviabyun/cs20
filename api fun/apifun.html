@@ -1,0 +1,138 @@
+<!doctype html>
+<html>
+<head>
+	<title>Weather API</title>
+	<meta charset="utf-8"/>
+    <style>
+        div {
+            display: grid;
+            gap: 1.5rem;
+            border: .1rem solid black;
+            width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 5px;
+        }
+
+        head,body {
+            text-align: center;
+            background-color: aliceblue;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+    </style>
+	<script>
+        window.onload = function() {
+            //call functions to get data (fetch and AJAX call)
+            fetchData();
+            getData();
+        }
+
+        async function fetchData() {
+            //get response from API
+            let response = await fetch("https://api.sunrise-sunset.org/json?lat=42.3601&lng=71.0589&date=2022-03-14");
+            
+            //get data in JSON format
+            let data = await response.json();
+            
+            if (response.status == 200) {
+                //display select data
+                display = "Sunrise: " 
+                        + data["results"].sunrise + "<br/>Sunset: "
+                        + data["results"].sunset + "<br/>Day length: "
+                        + data["results"].day_length + "<br/>Twilight Start: "
+                        + data["results"].civil_twilight_begin
+                        + "<br/>Twilight End: " + data["results"].civil_twilight_end; 
+
+                //set div to display data
+                document.getElementById("data2").innerHTML = display;
+            } else {
+                //display error message
+                document.getElementById("data").innerHTML = "Something went wrong!  Try again";
+            }
+        }
+
+		function getData() {
+			//Make instance of request object to make HTTP request after page is loaded
+			request = new XMLHttpRequest();
+			console.log("1 - request object created");
+ 
+			//Set the URL for the AJAX request to be the JSON file
+		    request.open("GET", "https://api.sunrise-sunset.org/json?lat=42.3601&lng=71.0589&date=2022-03-14", true)
+
+			console.log("2 - opened request file");
+ 
+			//Set up event handler/callback
+
+			request.onreadystatechange = function() {
+				console.log("3 - readystatechange event fired.");
+ 
+				if (request.readyState == 4 && request.status == 200) {
+
+					//Wait for done + success
+					console.log("5 - response received");
+					result = request.responseText;
+
+                    //parse result
+					data = JSON.parse(result);
+					
+                    //display select data
+                    display = "Sunrise: " 
+                        + data["results"].sunrise + "<br/>Sunset: "
+                        + data["results"].sunset + "<br/>Day length: "
+                        + data["results"].day_length + "<br/>Twilight Start: "
+                        + data["results"].civil_twilight_begin
+                        + "<br/>Twilight End: " + data["results"].civil_twilight_end;
+					
+                    //display results in div
+                    document.getElementById("data").innerHTML = display;
+				}
+				else if (request.readyState == 4 && request.status != 200) {
+                    //display error message
+					document.getElementById("data").innerHTML = "Something is wrong!  Check the logs to see where this went off the rails";
+				}
+
+				else if (request.readyState == 3) {
+                    //display error message
+					document.getElementById("data").innerHTML = "Too soon!  Try again";
+				}
+			}
+		    //Fire off the HTTP request
+			request.send();
+			console.log("4 - Request sent");
+		}
+	</script>
+</head>
+
+<body>
+
+	<h1>Sunrise and Sunset</h1>
+    <p id="intro">This draws data from a sunrise and sunset API, displaying the sunset
+        and <br/>sunrise times (among other data) for a given day. 
+        This represents the data for <br/>Boston (latitude 42.3601, 
+        longitude 71.0589) on March 14, 2022.
+    </p>
+    
+    <strong>AJAX Call: </strong><br/>
+	<div id="data">Loading...</div>
+    <br/>
+    <strong>Fetch Data: </strong><br/>
+    <div id="data2">Loading...</div>
+    <br/>
+    <div>
+        <p>For this assignment, I requested information with latitude, longitude,
+            and date as the parameters. The data I chose to display was the time
+            of sunset, sunrise, day length, civil twilight start, and civil
+            twilight end. There were a few other pieces of data I chose not to
+            display (nautical twilightstart/end and astronomical start/end).
+            <br/><br/>
+            This API could be helpful in many different ways. An example would
+            be some sort of weather web app with additional features (like
+            displaying sunrise/sunset times). Another example is a daylight
+            tracker that could have different uses - planning hikes to allow
+            appropriate time before sunset, checking the time of the sunset to
+            take photos of the sunset with friends, etc.
+        </p>
+    </div>
+    <p><strong>Source:</strong> <a href="https://sunrise-sunset.org/api">https://sunrise-sunset.org/api</a></p>
+</body>
+</html>

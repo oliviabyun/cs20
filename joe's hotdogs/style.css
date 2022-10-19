@@ -1,0 +1,17 @@
+@charset "utf-8";
+
+body {
+    background-color: aliceblue;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    display: block;
+    padding: 10px;
+}
+
+img {
+    display: block;
+    padding-bottom: 10px;
+}
+
+h1 , h2 {
+    display: inline;
+}

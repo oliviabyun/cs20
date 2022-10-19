@@ -1,0 +1,30 @@
+@charset "utf-8";
+
+header {
+    font-size: 50px;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+title, genre, year, artist {
+    display: block;
+    font-size: 20px;
+    font-weight: normal;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+br {
+    padding: 5px;
+}
+
+artist {
+    display: block;
+    font-size: 30px;
+    font-weight: bold;
+    padding: 5px;
+    border: 1px #000 solid;
+}
+
+title {
+    font-weight: bold;
+}

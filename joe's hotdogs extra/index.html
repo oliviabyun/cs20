@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link type="text/css" href="style.css" rel="stylesheet"/>
+    </head>
+
+    <body>
+        <script language="javascript">
+            //prompt user for order
+            numHotdogs = prompt("How many hotdogs do you want?", "");
+            numFries = prompt("How many orders of fries do you want?", "");
+            numSodas = prompt("How many sodas would you like?", "");
+
+            document.write("Thanks for ordering from Joe's Hotdogs!<br>");
+            
+            //calculate costs of each item
+            pHotdogs = parseFloat(numHotdogs) * 3.75;
+            pFries = parseFloat(numFries) * 2.00;
+            pSodas = parseFloat(numSodas) * 1.80;
+
+            //round costs of menu items
+            // pHotdogs = pHotdogs.toFixed(2);
+            // pFries = pFries.toFixed(2);
+            // pSodas = pSodas.toFixed(2);
+
+            //display order + cost of each item
+            document.write(nHotdogs + " qty Hotdogs: $" + pHotdogs + "<br>");
+            document.write(nFries + " qty Fries: $" + pFries + "<br>");
+            document.write(nSodas + " qty Sodas: $" + pSodas + "<br>");
+
+            //calculate and display subtotal
+            subtotal = pHotdogs + pFries + pSodas;
+            document.write("Subtotal: $" + subtotal + "<br>");
+        
+            //see if order qualifies for discount
+            if (subtotal >= 20) {
+                //calculate and apply 10% discount to subtotal
+                discount = subtotal * 0.1;
+                subtotal = subtotal - discount;
+
+                //round discount and subtotal
+                discount = discount.toFixed(2);
+                subtotal = subtotal.toFixed(2);
+
+                //display discount and updated subtotal
+                document.write("You received Joe's special offer - a 10% discount!<br>");
+                document.write("Discount applied: -$" + discount + "<br>");
+                document.write("Updated subtotal: $" + subtotal + "<br>");
+            }
+
+            //calculate and round sales tax (6.25%)
+            tax = subtotal * 0.0625;
+            tax = tax.toFixed(2);
+
+            //display tax
+            document.write("Massachusetts meals tax: $" + tax + "<br>");
+
+            //calculate and display total
+            total = subtotal + tax;
+            total = total.toFixed(2);
+            document.write("Total: $" + total);
+
+            //extra credit: format output in two columns using CSS
+        </script>
+    </body>
+</html>

@@ -1,0 +1,42 @@
+@charset "utf-8";
+
+header {
+    font-size: 50px;
+    font-weight: bold;
+    margin-left: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+title, genre, year, artist {
+    font-size: 20px;
+    font-weight: normal;
+    display: block;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+genre, year {
+    font-size: 16px;
+}
+
+genre {
+    display: inline;
+}
+
+artist {
+    display: block;
+    font-size: 30px;
+    font-weight: bold;
+    padding: 5px;
+    border: 1px #000 solid;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    overflow: hidden;
+    height: fit-content;
+    width: 400px;
+    background-color: aliceblue;
+}
+
+title {
+    font-weight: bold;
+    margin-bottom: -15px;
+}

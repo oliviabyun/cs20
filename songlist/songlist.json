@@ -1,0 +1,63 @@
+[
+        {
+            "artist": "The Script",
+            "title": "Breakeven",
+            "genre": ["Pop", "Rock"],
+            "year": 2008
+        },
+        {
+            "artist": "The Script",
+            "title": "Millionaires",
+            "genre": ["Pop", "Rock"],
+            "year": 2008
+        },
+        {
+            "artist": "Jack Johnson",
+            "title": "Banana Pancakes",
+            "genre": ["Pop", "Indie"],
+            "year": 2005
+        },
+        {
+            "artist": "Jack Johnson",
+            "title": "Upside Down",
+            "genre": ["Indie", "Alternative"],
+            "year": 2006
+        },
+        {
+            "artist": "Coldplay",
+            "title": "Yellow",
+            "genre": ["Indie", "Rock"],
+            "year": 2000
+        },
+        {
+            "artist": "Coldplay",
+            "title": "Viva la Vida",
+            "genre": ["Indie", "Pop"],
+            "year": 2008
+        },
+        {
+            "artist": "LANY",
+            "title": "ILYSB",
+            "genre": ["Indie", "Alternative"],
+            "year": 2016
+        },
+        {
+            "artist": "BANNERS",
+            "title": "Someone to You",
+            "genre": ["Indie", "Rock"],
+            "year": 2019
+        },
+
+        {
+            "artist": "BANNERS",
+            "title": "Heads and Tails",
+            "genre": ["Indie", "Alternative"],
+            "year": 2019
+        },
+        {
+            "artist": "James Bay",
+            "title": "Hold Back the Rain",
+            "genre": ["Indie", "Alternative"],
+            "year": 2014
+        }
+]
