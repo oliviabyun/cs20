@@ -1,5 +1,5 @@
 # cs20
-Tufts comp20 (web programming) course
+Web programming course
 
 In this course, I learned an introduction to techniques, principles, and practices of writing computer programs 
 for the web. I learned about server and browser capabilities and limits; media types, handlers, and limitations;
